@@ -217,7 +217,7 @@ def hcf(x, y):
     return x
 
 
-def lcm(x, y):
+def lcm2(x, y):
     # This function computes LCM
     lcm = (x*y)//hcf(x, y)
 
