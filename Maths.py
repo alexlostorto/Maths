@@ -170,7 +170,8 @@ def quadraticSequenceSolve(quadraticList):
         # print(f"1st Difference: {pairDifference}  Index: {i}")
     for pair in pairs3:
         if pairs3[0] != pair:
-            print(f"Difference of quadratic sequences don't have a common difference  1st Differences: {pairs3}")
+            print(
+                f"Difference of quadratic sequences don't have a common difference  1st Differences: {pairs3}")
             return
     b = int(pairs3[0])
     c = int(quadraticDifferenceList[0]) - b
@@ -371,16 +372,26 @@ def stampToDate(timeStamp, *args):
         print(date)
 
 
-def quadraticSolver (a, b, c):
+def quadraticSolver(a, b, c):
     discriminant = (b**2-4*a*c)**(1/2)
-    solutions = [((-b+discriminant)/2*a),((-b-discriminant)/2*a)]
+    solutions = [((-b+discriminant)/2*a), ((-b-discriminant)/2*a)]
     for i in range(len(solutions)):
         solutions[i] = f"x = {solutions[i]}"
     print(' '.join(str(solution) for solution in solutions))
 
 
+def interiorAngle(sides):
+    return 180-(360/int(sides))
+
+
+def exteriorAngle(sides):
+    return 360/int(sides)
+
+
 if __name__ == '__main__':
     timeElapsed(stampToDate, 1654962147, True)
+    # timeElapsed(interiorAngle(5))
+    # timeElapsed(exteriorAngle(5))
     # timeElapsed(quadraticSolve(1, 10, False))
     # timeElapsed(checkPrime, 4, True)
     # timeElapsed(listPrimes, 1, 100, False)
