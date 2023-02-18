@@ -2,7 +2,7 @@
 
 This program contains many maths functions which you will probably find useful!
 
-``` python
+```python
 # List of functions
 def linearSolve(start, end, between):
 def geometricSolve(start, end, between):
@@ -27,14 +27,16 @@ def quadraticSolve(a, length, *args):
 def checkPrime(number, *args):
 def listPrimes(start, length, *args):
 def stampToDate(timeStamp, *args):
-def quadraticSolver (a, b, c):
+def quadraticSolver(a, b, c):
+def interiorAngle(sides):
+def exteriorAngle(sides):
 ```
 
-## How it Works 
+## How it Works
 
 Some day soon I will explain every function...
 
-## Credits 
+## Credits
 
 Everything is coded by Alex lo Storto
 
