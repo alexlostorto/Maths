@@ -34,7 +34,13 @@ def exteriorAngle(sides):
 
 ## How it Works
 
-Some day soon I will explain every function...
+#### Interior Angle
+
+1. Find the exterior angle by doing 360 divided by the number of sides. Then use angles on a straight line to work out the interior angle.
+
+```python
+return 180-(360/int(sides))
+```
 
 ## Credits
 
