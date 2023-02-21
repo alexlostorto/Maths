@@ -42,6 +42,14 @@ def exteriorAngle(sides):
 return 180-(360/int(sides))
 ```
 
+#### Exterior Angle
+
+1. Find the exterior angle by doing 360 divided by the number of sides.
+
+```python
+return 360/int(sides)
+```
+
 ## Credits
 
 Everything is coded by Alex lo Storto
