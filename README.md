@@ -50,6 +50,18 @@ return 180-(360/int(sides))
 return 360/int(sides)
 ```
 
+#### Quadratic Solve
+
+1. Solves quadratic equations using the quadratic formula and prints both possible values.
+
+```python
+discriminant = (b**2-4*a*c)**(1/2)
+solutions = [((-b+discriminant)/2*a), ((-b-discriminant)/2*a)]
+for i in range(len(solutions)):
+    solutions[i] = f"x = {solutions[i]}"
+print(' '.join(str(solution) for solution in solutions))
+```
+
 ## Credits
 
 Everything is coded by Alex lo Storto
