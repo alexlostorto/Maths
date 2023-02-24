@@ -54,7 +54,7 @@ def convert(number, initial, final, roundTo=3):
     except NameError:
         print("Final unit was not defined")
 
-    return (number * initial / final, roundTo)
+    return round(number * initial / final, roundTo)
 
 
 def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, roundTo=3):
@@ -78,5 +78,5 @@ def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, rou
     return round(number * initialLength / initialTime / finalLength * finalTime, roundTo)
 
 
-print(convert(1, KILOMETER, METER))
+print(convert(900000, CENTIMETER, KILOMETER))
 print(convertSpeed(32, METER, SECOND, MILE, HOUR))
