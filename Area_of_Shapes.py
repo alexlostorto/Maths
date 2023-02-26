@@ -37,5 +37,11 @@ def cylinderSurfaceArea(radius, height):
     print(f"Surface Area: {round(surfaceArea, ROUND)}π")
 
 
-if __name__ == '__main__':
-    calculateDensity(0.00032, 0.33)
+__all__ = [
+    circleArea,
+    circleData,
+    calculateDensity,
+    calculateMass,
+    calculateVolume,
+    cylinderSurfaceArea
+]

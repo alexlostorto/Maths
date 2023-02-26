@@ -1,3 +1,4 @@
+import sys
 from math import gcd
 import random
 
@@ -197,7 +198,7 @@ def lcm(x, y):
     return lcm
 
 
-def compute_gcd(x, y):
+def gcd(x, y):
     while y:
         x, y = y, x % y
 
@@ -388,25 +389,60 @@ def exteriorAngle(sides):
     return 360/int(sides)
 
 
-if __name__ == '__main__':
-    timeElapsed(stampToDate, 1654962147, True)
-    # timeElapsed(interiorAngle(5))
-    # timeElapsed(exteriorAngle(5))
-    # timeElapsed(quadraticSolve(1, 10, False))
-    # timeElapsed(checkPrime, 4, True)
-    # timeElapsed(listPrimes, 1, 100, False)
-    # timeElapsed(quadraticSolve, 1, 4, 2, 10, True)
-    # timeElapsed(linearSequenceCreate, 3, 5, 10)
-    # timeElapsed(linearSequenceSolve, [3, 7])
-    # timeElapsed(simulatenousSolve, [3, 4], 24, [4, 3], 22)
-    # timeElapsed(hcf, 22, 68)
-    # timeElapsed(lcm, 22, 72)
-    # timeElapsed(quadraticSequenceSolve, [6, 10, 20])
-    # timeElapsed(quadraticSequenceCreate, 2, -4, -3, 11)
-    # quadraticSolver(1, 5, 6)
-    # linearSolve(9, 1, 1)
-    # geometricSolve(1, 16, 3)
-    # geometricCreate(1, 2, 8)
-    # linearCreate(1, 5, 8)
-    # ratioSimplify('3:9:57')
-    pass
+functions = [
+    "linearSolve(start, end, between):",
+    "geometricSolve(start, end, between):",
+    "ratioSimplify(ratiostr):",
+    "addFractions(n1, d1, n2, d2):",
+    "root(exponent, number):",
+    "geometricCreate(start, multiplier, length):",
+    "linearCreate(start, interval, length):",
+    "timeElapsed(function, *args):",
+    "quadraticSequenceCreate(a, b, c, length):",
+    "quadraticSequenceSolve(quadraticList):",
+    "lcm(x, y):",
+    "gcd(x, y):",
+    "hcf(x, y):",
+    "lcm2(x, y):",
+    "simulatenousSolve(set1, sum1, set2, sum2):",
+    "linearSequenceSolve(linearList):",
+    "linearSequenceCreate(a, b, length):",
+    "printReturn(args):",
+    "quadraticCreate(a, b, c, length, *args):",
+    "quadraticSolve(a, length, *args):",
+    "checkPrime(number, *args):",
+    "listPrimes(start, length, *args):",
+    "stampToDate(timeStamp, *args):",
+    "quadraticSolver(a, b, c):",
+    "interiorAngle(sides):",
+    "exteriorAngle(sides):"
+]
+
+__all__ = [
+    linearSolve,
+    geometricSolve,
+    ratioSimplify,
+    addFractions,
+    root,
+    geometricCreate,
+    linearCreate,
+    timeElapsed,
+    quadraticSequenceCreate,
+    quadraticSequenceSolve,
+    lcm,
+    gcd,
+    hcf,
+    lcm2,
+    simulatenousSolve,
+    linearSequenceSolve,
+    linearSequenceCreate,
+    printReturn,
+    quadraticCreate,
+    quadraticSolve,
+    checkPrime,
+    listPrimes,
+    stampToDate,
+    quadraticSolver,
+    interiorAngle,
+    exteriorAngle
+]

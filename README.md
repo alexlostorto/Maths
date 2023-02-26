@@ -15,7 +15,7 @@ def timeElapsed(function, *args):
 def quadraticSequenceCreate(a, b, c, length):
 def quadraticSequenceSolve(quadraticList):
 def lcm(x, y):
-def compute_gcd(x, y):
+def gcd(x, y):
 def hcf(x, y):
 def lcm2(x, y):
 def simulatenousSolve(set1, sum1, set2, sum2):
