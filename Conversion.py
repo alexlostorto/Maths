@@ -78,7 +78,5 @@ def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, rou
     return round(number * initialLength / initialTime / finalLength * finalTime, roundTo)
 
 
-__all__ = [
-    convert,
-    convertSpeed
-]
+print(convert(8, KILOMETER, CENTIMETER))
+print(convertSpeed(32, METER, SECOND, MILE, HOUR))
