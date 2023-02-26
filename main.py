@@ -51,10 +51,8 @@ def main():
         param = input(f"{param}: ")
         if param.isdigit():
             params[index] = int(param)
-            print(f"{param} is an integer")
         elif param.isnumeric():
             params[index] = float(param)
-            print(f"{param} is a float")
         else:
             params[index] = param
 

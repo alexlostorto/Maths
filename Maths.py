@@ -382,41 +382,12 @@ def quadraticSolver(a, b, c):
 
 
 def interiorAngle(sides):
-    return 180-(360/int(sides))
+    print(f"Interior angle: {180-(360/int(sides))}")
 
 
 def exteriorAngle(sides):
-    return 360/int(sides)
+    print(f"Exterior angle: {360/int(sides)}")
 
-
-functions = [
-    "linearSolve(start, end, between):",
-    "geometricSolve(start, end, between):",
-    "ratioSimplify(ratiostr):",
-    "addFractions(n1, d1, n2, d2):",
-    "root(exponent, number):",
-    "geometricCreate(start, multiplier, length):",
-    "linearCreate(start, interval, length):",
-    "timeElapsed(function, *args):",
-    "quadraticSequenceCreate(a, b, c, length):",
-    "quadraticSequenceSolve(quadraticList):",
-    "lcm(x, y):",
-    "gcd(x, y):",
-    "hcf(x, y):",
-    "lcm2(x, y):",
-    "simulatenousSolve(set1, sum1, set2, sum2):",
-    "linearSequenceSolve(linearList):",
-    "linearSequenceCreate(a, b, length):",
-    "printReturn(args):",
-    "quadraticCreate(a, b, c, length, *args):",
-    "quadraticSolve(a, length, *args):",
-    "checkPrime(number, *args):",
-    "listPrimes(start, length, *args):",
-    "stampToDate(timeStamp, *args):",
-    "quadraticSolver(a, b, c):",
-    "interiorAngle(sides):",
-    "exteriorAngle(sides):"
-]
 
 __all__ = [
     linearSolve,
