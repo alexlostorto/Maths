@@ -2,7 +2,7 @@ PI = 3.14159265359
 ROUND = 2
 
 
-def frustumVolume(baseShape='rectangle', frustumHeight=1, baseLength=1, baseWidth=1, frustumLength=1, frustumWidth=1):
+def frustumVolume(baseShape='rectangle', frustumHeight=1, baseLength=1, baseWidth=1, frustumLength=1, frustumWidth=1, log=True):
     if baseShape.lower() == 'triangle':
         baseArea = 1 / 2 * baseLength * baseWidth
         frustumArea = 1 / 2 * frustumLength * frustumWidth
@@ -12,8 +12,11 @@ def frustumVolume(baseShape='rectangle', frustumHeight=1, baseLength=1, baseWidt
         baseArea = baseLength * baseWidth
         frustumArea = frustumLength * frustumWidth
 
-    print(round(frustumHeight / 3 * (baseArea + frustumArea +
-          (baseArea * frustumArea) ** (1 / 2)), ROUND))
+    if log == True:
+        print(round(frustumHeight / 3 * (baseArea + frustumArea +
+              (baseArea * frustumArea) ** (1 / 2)), ROUND))
+
+    return round(frustumHeight / 3 * (baseArea + frustumArea + (baseArea * frustumArea) ** (1 / 2)), ROUND)
 
 
 __all__ = [
