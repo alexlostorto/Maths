@@ -55,8 +55,10 @@ def main():
             params[index] = float(param)
         elif param.lower() == 'true':
             params[index] = True
-        elif params.lower() == 'false':
+        elif param.lower() == 'false':
             params[index] = False
+        elif param == '':
+            params.pop(index)
         else:
             params[index] = param
 
