@@ -1,6 +1,12 @@
-import sys
 from math import gcd
 import random
+
+
+def floatToString(inputValue):
+    if inputValue >= 0:
+        return '+' + ('%.15f' % inputValue).rstrip('0').rstrip('.')
+    else:
+        return ('%.15f' % inputValue).rstrip('0').rstrip('.')
 
 
 def linearSolve(start, end, between, log=True):
@@ -450,6 +456,16 @@ def exteriorAngle(sides, log=True):
     return 360/int(sides)
 
 
+def completeTheSquare(a, b, c, log=True):
+    b = b / a / 2
+    c = c - a * b ** 2
+
+    if log == True:
+        print(f"Equation: {a}(𝑥²{floatToString(b)}){floatToString(c)}")
+
+    return a, b, c
+
+
 __all__ = [
     linearSolve,
     geometricSolve,
@@ -476,5 +492,6 @@ __all__ = [
     stampToDate,
     quadraticSolver,
     interiorAngle,
-    exteriorAngle
+    exteriorAngle,
+    completeTheSquare
 ]
