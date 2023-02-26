@@ -1,11 +1,13 @@
 import Maths
 import Area_of_Shapes
 import Volume_of_Shapes
+import Conversion
 import inspect
 
 
 modules = [
     Maths,
+    Conversion,
     Area_of_Shapes,
     Volume_of_Shapes
 ]
