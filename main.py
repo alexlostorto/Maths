@@ -53,6 +53,10 @@ def main():
             params[index] = int(param)
         elif param.isnumeric():
             params[index] = float(param)
+        elif param.lower() == 'true':
+            params[index] = True
+        elif params.lower() == 'false':
+            params[index] = False
         else:
             params[index] = param
 

@@ -3,7 +3,7 @@ from math import gcd
 import random
 
 
-def linearSolve(start, end, between):
+def linearSolve(start, end, between, log=True):
     difference = int(end) - int(start)
     interval = difference / (int(between) + 1)
     betweens = []
@@ -14,10 +14,14 @@ def linearSolve(start, end, between):
             betweens.append(str(int(newinterval)))
         else:
             betweens.append(str(newinterval))
-    print(f'Linear Sequence Solved: {start}, {", ".join(betweens)}, {end}')
+
+    if log == True:
+        print(f'Linear sequence: {start}, {", ".join(betweens)}, {end}')
+
+    return [start, ", ".join(betweens), end]
 
 
-def geometricSolve(start, end, between):
+def geometricSolve(start, end, between, log=True):
     newend = end / start
     newbetween = between + 1
     betweens = []
@@ -30,10 +34,14 @@ def geometricSolve(start, end, between):
             betweens.append(str(int(newinterval)))
         else:
             betweens.append(str(newinterval))
-    print(f'Geometric Sequence Solved: {start}, {", ".join(betweens)}, {end}')
+
+    if log == True:
+        print(f'Geometric sequence: {start}, {", ".join(betweens)}, {end}')
+
+    return [start, ", ".join(betweens), end]
 
 
-def ratioSimplify(ratiostr):
+def ratioSimplify(ratiostr, log=True):
     ratiolist = ratiostr.split(':')
     ratiolist = [int(i) for i in ratiolist]
     divisor = gcd(*ratiolist)
@@ -44,33 +52,46 @@ def ratioSimplify(ratiostr):
             simplified.append(str(int(newratio)))
         else:
             simplified.append(str(newratio))
-    print(f'Simplified Ratio: {":".join(simplified)}')
+
+    if log == True:
+        print(f'Simplified ratio: {":".join(simplified)}')
+
+    return ":".join(simplified)
 
 
-def addFractions(n1, d1, n2, d2):
+def addFractions(n1, d1, n2, d2, log=True):
     x = gcd(d1, d2)
     frac = (((n1 * d2) + (n2 * d1)) / x, (d1 * d2) / x)
+
+    if log == True:
+        print(f'Fraction: {frac}')
 
     return frac
 
 
-def root(exponent, number):
+def root(exponent, number, log=True):
     rootAnswer = number**(1/exponent)
-    # print(rootAnswer)
+
+    if log == True:
+        print(f'Root: {rootAnswer}')
 
     return rootAnswer
 
 
-def geometricCreate(start, multiplier, length):
+def geometricCreate(start, multiplier, length, log=True):
     betweens = []
     newinterval = start
     for i in range(int(length - 1)):
         newinterval = newinterval * multiplier
         betweens.append(str(newinterval))
-    print(f'Geometric Sequence Created: {start}, {", ".join(betweens)}')
+
+    if log == True:
+        print(f'Geometric sequence: {start}, {", ".join(betweens)}')
+
+    return [start, ", ".join(betweens)]
 
 
-def linearCreate(start, interval, length):
+def linearCreate(start, interval, length, log=True):
     betweens = []
     newinterval = start
     for i in range(int(length - 1)):
@@ -79,7 +100,11 @@ def linearCreate(start, interval, length):
             betweens.append(str(int(newinterval)))
         else:
             betweens.append(str(newinterval))
-    print(f'Linear Sequence Created: {start}, {", ".join(betweens)}')
+
+    if log == True:
+        print(f'Linear sequence: {start}, {", ".join(betweens)}')
+
+    return [start, ", ".join(betweens)]
 
 
 def timeElapsed(function, *args):
@@ -109,19 +134,21 @@ def timeElapsed(function, *args):
             raise Exception("Unable to call function")
 
 
-def quadraticSequenceCreate(a, b, c, length):
+def quadraticSequenceCreate(a, b, c, length, log=True):
     numbers = []
     for i in range(length):
         i += 1
         number = (i**2)*a
         number = number + (i*b+c)
         numbers.append(str(number))
-    print(f'{", ".join(numbers)}')
 
-    return numbers
+    if log == True:
+        print(f'{", ".join(numbers)}')
+
+    return ", ".join(numbers)
 
 
-def quadraticSequenceSolve(quadraticList):
+def quadraticSequenceSolve(quadraticList, log=True):
     length = len(quadraticList)
     firstPair = 0
     secondPair = 1
@@ -177,10 +204,14 @@ def quadraticSequenceSolve(quadraticList):
     b = int(pairs3[0])
     c = int(quadraticDifferenceList[0]) - b
     newQuadratic = quadraticSequenceCreate(a, b, c, length+4)
-    print(f'a: {a}  b: {b}  c: {c}  Sequence: {", ".join(newQuadratic)}')
+
+    if log == True:
+        print(f'a: {a}  b: {b}  c: {c}  Sequence: {", ".join(newQuadratic)}')
+
+    return [a, b, c, ", ".join(newQuadratic)]
 
 
-def lcm(x, y):
+def lcm(x, y, log=True):
     # choose the greater number
     if x > y:
         greater = x
@@ -193,42 +224,46 @@ def lcm(x, y):
             break
         greater += 1
 
-    print(f"The LCM is: {lcmNumber}")
+    if log == True:
+        print(f"The LCM is: {lcmNumber}")
 
-    return lcm
+    return lcmNumber
 
 
-def gcd(x, y):
+def gcd(x, y, log=True):
     while y:
         x, y = y, x % y
 
-    print(f"The GCD is: {x}")
+    if log == True:
+        print(f"The GCD is: {x}")
 
     return x
 
 
-def hcf(x, y):
+def hcf(x, y, log=True):
     r = y
     while r != 0:
         y = r
         r = x % y
         x = y
 
-    # print(f"The GCD is: {x}")
+    if log == True:
+        print(f"The HCF is: {x}")
 
     return x
 
 
-def lcm2(x, y):
+def lcm2(x, y, log=True):
     # This function computes LCM
     lcm = (x*y)//hcf(x, y)
 
-    # print(f"The LCM is: {lcm}")
+    if log == True:
+        print(f"The LCM is: {lcm}")
 
-    return lcm
+    return x
 
 
-def simulatenousSolve(set1, sum1, set2, sum2):
+def simulatenousSolve(set1, sum1, set2, sum2, log=True):
     # [a1,b1,c1], [a2,b2,c2], x, y
     if len(set1) != len(set2):
         print(f"Sets not equal  Set 1: {len(set1)} Set 2: {len(set2)}")
@@ -242,11 +277,15 @@ def simulatenousSolve(set1, sum1, set2, sum2):
     for i in range(len(set1)):
         newSet1.append(str(set1[i]*multiplier1))
         newSet2.append(str(set2[i]*multiplier2))
-    print(f'Set 1: {", ".join(newSet1)}')
-    print(f'Set 2: {", ".join(newSet2)}')
+
+    if log == True:
+        print(f'Set 1: {", ".join(newSet1)}')
+        print(f'Set 2: {", ".join(newSet2)}')
+
+    return [", ".join(newSet1), ", ".join(newSet2)]
 
 
-def linearSequenceSolve(linearList):
+def linearSequenceSolve(linearList, log=True):
     length = len(linearList)
     firstPair = 0
     secondPair = 1
@@ -264,24 +303,28 @@ def linearSequenceSolve(linearList):
         else:
             a = pairs[0]
     b = linearList[0] - a
-    if b == 0:
-        print(f"Nth Term: {a}n")
-    elif b < 0:
-        print(f"Nth Term: {a}n{b}")
-    else:
-        print(f"Nth Term: {a}n+{b}")
     newSequence = linearSequenceCreate(a, b, 10)
     print(f"Sequence: {', '.join(newSequence)}")
+
+    if log == True:
+        if b == 0:
+            print(f"Nth Term: {a}n")
+        elif b < 0:
+            print(f"Nth Term: {a}n{b}")
+        else:
+            print(f"Nth Term: {a}n+{b}")
 
     return a, b
 
 
-def linearSequenceCreate(a, b, length):
+def linearSequenceCreate(a, b, length, log=True):
     linearList = []
     for i in range(length):
         number = a*(i+1)+b
         linearList.append(str(number))
-    # print(f"Linear Sequence: {', '.join(linearList)}")
+
+    if log == True:
+        print(f"Linear Sequence: {', '.join(linearList)}")
 
     return linearList
 
@@ -296,19 +339,20 @@ def printReturn(args):
     return printStatus
 
 
-def quadraticCreate(a, b, c, length, *args):
+def quadraticCreate(a, b, c, length, log=True):
     quadraticList = []
     for i in range(length):
         i += 1
         number = a * (i ** 2) + b * i + c
         quadraticList.append(str(number))
-    if printReturn(args):
+
+    if log == True:
         print(f"Quadratic Sequence: {', '.join(quadraticList)}")
 
     return quadraticList
 
 
-def quadraticSolve(a, length, *args):
+def quadraticSolve(a, length, log=True):
     b = 0
     c = 0
     interval = 0
@@ -318,7 +362,7 @@ def quadraticSolve(a, length, *args):
         c = 0
         while c <= int(quadraticList[length*2-1]):
             c += 1
-            newQuadratic = quadraticCreate(a, b, c, length, *args)
+            newQuadratic = quadraticCreate(a, b, c, length, log)
             print(newQuadratic)
             # print(quadraticList)
             for f in range(len(newQuadratic)):
@@ -337,56 +381,73 @@ def quadraticSolve(a, length, *args):
                 print(f"Check:    {', '.join(quadraticCreate(a, b, c, 10))}")
 
 
-def checkPrime(number, *args):
+def checkPrime(number, log=True):
     number = int(number)
     primeState = True
     for i in range(2, int(number**(1/2))+1):
         if number % i == 0:
-            if printReturn(args):
+            if log == True:
                 print(f"Number is divisible by {i}")
             primeState = False
     if primeState:
-        if printReturn(args):
+        if log == True:
             print(f"{number} is a prime")
     else:
-        if printReturn(args):
+        if log == True:
             print(f"{number} is NOT a prime")
 
     return primeState
 
 
-def listPrimes(start, length, *args):
+def listPrimes(start, length, log=True):
     primesList = []
     for i in range(start, length):
-        primeStatus = checkPrime(i, *args)
+        primeStatus = checkPrime(i, log)
         if primeStatus:
             prime = i
             primesList.append(str(prime))
-    print(f"Primes: {', '.join(primesList)}")
+
+    if log == True:
+        print(f"Primes: {', '.join(primesList)}")
+
+    return ', '.join(primesList)
 
 
-def stampToDate(timeStamp, *args):
+def stampToDate(timeStamp, log=True):
     from datetime import datetime
 
     date = datetime.fromtimestamp(timeStamp)
-    if printReturn(args):
+
+    if log == True:
         print(date)
 
+    return date
 
-def quadraticSolver(a, b, c):
+
+def quadraticSolver(a, b, c, log=True):
     discriminant = (b**2-4*a*c)**(1/2)
     solutions = [((-b+discriminant)/2*a), ((-b-discriminant)/2*a)]
     for i in range(len(solutions)):
         solutions[i] = f"x = {solutions[i]}"
-    print(' '.join(str(solution) for solution in solutions))
+
+    if log == True:
+        print(' '.join(str(solution) for solution in solutions))
+
+    return ' '.join(str(solution) for solution in solutions)
 
 
-def interiorAngle(sides):
-    print(f"Interior angle: {180-(360/int(sides))}")
+def interiorAngle(sides, log=True):
+    if log == True:
+        print(f"Interior angle: {180-(360/int(sides))}")
+
+    return 180-(360/int(sides))
 
 
-def exteriorAngle(sides):
-    print(f"Exterior angle: {360/int(sides)}")
+def exteriorAngle(sides, log=True):
+    if log == True:
+        print(f"Exterior angle: {360/int(sides)}")
+
+    return 360/int(sides)
 
 
 __all__ = [
