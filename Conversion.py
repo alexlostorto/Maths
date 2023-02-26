@@ -44,7 +44,7 @@ ATTOSECOND = 0.000000000000000001
 MILE = 1600
 
 
-def convert(number, initial, final, roundTo=3):
+def convert(number, initial, final, roundTo=3, log=True):
     try:
         initial
     except NameError:
@@ -54,10 +54,13 @@ def convert(number, initial, final, roundTo=3):
     except NameError:
         print("Final unit was not defined")
 
+    if log == True:
+        print(f"Result: {round(number * initial / final, roundTo)}")
+
     return round(number * initial / final, roundTo)
 
 
-def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, roundTo=3):
+def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, roundTo=3, log=True):
     try:
         initialLength
     except NameError:
@@ -74,6 +77,10 @@ def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, rou
         finalTime
     except NameError:
         print("Final time unit was not defined")
+
+    if log == True:
+        print(
+            f"Result: {round(number * initialLength / initialTime / finalLength * finalTime, roundTo)}")
 
     return round(number * initialLength / initialTime / finalLength * finalTime, roundTo)
 
