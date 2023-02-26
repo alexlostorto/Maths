@@ -51,7 +51,7 @@ def main():
     print("--PARAMETERS--")
     for index, param in enumerate(params):
         param = input(f"{param}: ")
-        if param.isdigit():
+        if param.lstrip('-').isdigit():
             params[index] = int(param)
         elif param.isnumeric():
             params[index] = float(param)
