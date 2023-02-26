@@ -12,7 +12,8 @@ def frustumVolume(baseShape='rectangle', frustumHeight=1, baseLength=1, baseWidt
         baseArea = baseLength * baseWidth
         frustumArea = frustumLength * frustumWidth
 
-    return round(frustumHeight / 3 * (baseArea + frustumArea + (baseArea * frustumArea) ** (1 / 2)), ROUND)
+    print(round(frustumHeight / 3 * (baseArea + frustumArea +
+          (baseArea * frustumArea) ** (1 / 2)), ROUND))
 
 
 __all__ = [
