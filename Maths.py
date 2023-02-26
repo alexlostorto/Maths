@@ -506,12 +506,14 @@ def expandDoubleBrackets(a1, b1, a2, b2, log=True):
         equation = []
         for i in range(len(coefficients)):
             expression = ''
-            if coefficients[i] < 1:
+            if coefficients[i] == 0:
                 continue
             elif coefficients[i] > 1:
                 expression += floatToString(coefficients[i], False)
             elif coefficients[i] == -1:
-                expression += '-'
+                expression += '- '
+            elif coefficients[i] <= -2:
+                expression += '- ' + floatToString(coefficients[i]*-1, False)
             for variable, power in variables[i].items():
                 if power == 1:
                     expression += variable
@@ -532,9 +534,11 @@ def expandDoubleBrackets(a1, b1, a2, b2, log=True):
             multiplied.append(mutltiplyExpressions(expression1, expression2))
 
     equation = simplifyExpressions(multiplied)
+    equation = ' + '.join(equation)
+    equation = equation.replace('+ -', '-')
 
     if log == True:
-        print(f"Equation: {' + '.join(equation)}")
+        print(f"Equation: {equation}")
 
     return equation
 
