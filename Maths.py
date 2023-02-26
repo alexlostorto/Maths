@@ -1,9 +1,10 @@
 from math import gcd
 import random
+import re
 
 
-def floatToString(inputValue):
-    if inputValue >= 0:
+def floatToString(inputValue, symbol=True):
+    if inputValue >= 0 and symbol == True:
         return '+' + ('%.15f' % inputValue).rstrip('0').rstrip('.')
     else:
         return ('%.15f' % inputValue).rstrip('0').rstrip('.')
@@ -466,6 +467,78 @@ def completeTheSquare(a, b, c, log=True):
     return a, b, c
 
 
+def expandDoubleBrackets(a1, b1, a2, b2, log=True):
+    superscipt = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹']
+
+    def mutltiplyExpressions(x, y):
+        values = x + y
+        coefficient = 1
+        variables = []
+        for value in values:
+            if value.isdigit():
+                coefficient *= float(value)
+            elif '-' in value:
+                coefficient *= -1
+                variables.append(value[1:])
+            else:
+                variables.append(value)
+
+        variablesDict = {}
+        for variable in variables:
+            if variable in variablesDict:
+                variablesDict[variable] += 1
+            else:
+                variablesDict[variable] = 1
+
+        return [coefficient, variablesDict]
+
+    def simplifyExpressions(expressions):
+        coefficients = []
+        variables = []
+        for expression in expressions:
+            if expression[1] in variables:
+                index = variables.index(expression[1])
+                coefficients[index] += expression[0]
+            else:
+                coefficients.append(expression[0])
+                variables.append(expression[1])
+
+        equation = []
+        for i in range(len(coefficients)):
+            expression = ''
+            if coefficients[i] < 1:
+                continue
+            elif coefficients[i] > 1:
+                expression += floatToString(coefficients[i], False)
+            elif coefficients[i] == -1:
+                expression += '-'
+            for variable, power in variables[i].items():
+                if power == 1:
+                    expression += variable
+                else:
+                    expression += variable + superscipt[power]
+            equation.append(expression)
+
+        return equation
+
+    expressions = []
+    for expression in [a1, b1, a2, b2]:
+        expressions.append(
+            list(filter(None, re.split('(\d+)', str(expression)))))
+
+    multiplied = []
+    for expression1 in expressions[0:2]:
+        for expression2 in expressions[2:4]:
+            multiplied.append(mutltiplyExpressions(expression1, expression2))
+
+    equation = simplifyExpressions(multiplied)
+
+    if log == True:
+        print(f"Equation: {' + '.join(equation)}")
+
+    return equation
+
+
 __all__ = [
     linearSolve,
     geometricSolve,
@@ -493,5 +566,6 @@ __all__ = [
     quadraticSolver,
     interiorAngle,
     exteriorAngle,
-    completeTheSquare
+    completeTheSquare,
+    expandDoubleBrackets
 ]
