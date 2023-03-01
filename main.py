@@ -27,6 +27,13 @@ def main():
                 print(f"You chose '{array[userInput-1].__name__}'\n")
                 return userInput
 
+    def formatParam(index, paramName, parameters, param):
+        if paramName == '':
+            parameters[0][index] = param
+        else:
+            parameters[1][paramName] = param
+        return parameters
+
     # Choose modules
     for i in range(len(modules)):
         print(f"{i+1}) {modules[i].__name__}")
@@ -49,24 +56,59 @@ def main():
         functions[function-1]).parameters.values()]
 
     print("--PARAMETERS--")
+    positional = []
+    keyword = {}
+    parameters = [positional, keyword]
     for index, param in enumerate(params):
-        param = input(f"{param}: ")
-        if param.lstrip('-').isdigit():
-            params[index] = int(param)
-        elif param.isnumeric():
-            params[index] = float(param)
-        elif param.lower() == 'true':
-            params[index] = True
-        elif param.lower() == 'false':
-            params[index] = False
-        elif param == '':
-            params.pop(index)
+        if '=' in param:
+            paramName = param.split('=')[0]
         else:
-            params[index] = param
+            paramName = ''
+
+        while True:
+            param = input(f"{param}: ")
+            if param.lstrip('-').isdigit():
+                parameters = formatParam(
+                    index, paramName, parameters, int(param))
+                break
+            elif param.isnumeric():
+                parameters = formatParam(
+                    index, paramName, parameters, float(param))
+                break
+            elif param.lower() == 'true':
+                parameters = formatParam(index, paramName, parameters, True)
+                break
+            elif param.lower() == 'false':
+                parameters = formatParam(index, paramName, parameters, False)
+                break
+            elif param == '':
+                if not paramName == '':
+                    break
+                else:
+                    print("Don't leave me empty. Try again.")
+            elif param.startswith('[') and param.endswith(']'):
+                if ', ' in param:
+                    parameters = formatParam(
+                        index, paramName, parameters, param[1:-1].split(', '))
+                    break
+                elif ',' in param:
+                    parameters = formatParam(
+                        index, paramName, parameters, param[1:-1].split(','))
+                    break
+                elif ' ' in param:
+                    parameters = formatParam(
+                        index, paramName, parameters, param[1:-1].split(' '))
+                    break
+                else:
+                    print("Invalid list. Try again.")
+            else:
+                parameters = formatParam(
+                    index, paramName, parameters, param)
+                break
 
     print(f"\nRunning {functions[function-1].__name__}")
 
-    functions[function-1](*params)
+    functions[function-1](*parameters[0], **parameters[1])
 
 
 if __name__ == '__main__':
