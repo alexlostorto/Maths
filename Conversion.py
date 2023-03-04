@@ -1,9 +1,9 @@
 # Lengths (compared to 1 meter)
-METER = 1
-KILOMETER = 1000
+METER, M = 1, 1
+KILOMETER, KM = 1000, 1000
 DECIMETER = 0.1
-CENTIMETER = 0.01
-MILLIMETER = 0.001
+CENTIMETER, CM = 0.01, 0.01
+MILLIMETER, MM = 0.001, 0.001
 MICROMETER = 0.000001
 NANOMETER = 0.000000001
 MILE = 1609.344
@@ -24,8 +24,8 @@ FEMTOMETER = 0.000000000000001
 
 # Times (compared to 1 second)
 SECOND = 1
-MILLISECOND = 0.001
-MINUTE = 60
+MILLISECOND, MS = 0.001, 0.001
+MINUTE, MIN = 60, 60
 HOUR = 3600
 DAY = 86400
 WEEK = 604800
@@ -45,6 +45,11 @@ MILE = 1600
 
 
 def convert(number, initial, final, roundTo=3, log=True):
+    if isinstance(initial, str):
+        initial = globals()[initial.upper()]
+    if isinstance(final, str):
+        final = globals()[final.upper()]
+
     try:
         initial
     except NameError:
@@ -55,12 +60,21 @@ def convert(number, initial, final, roundTo=3, log=True):
         print("Final unit was not defined")
 
     if log == True:
-        print(f"Result: {round(number * initial / final, roundTo)}")
+        print(f"Result: {round(number * initial / final, roundTo):,}")
 
     return round(number * initial / final, roundTo)
 
 
 def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, roundTo=3, log=True):
+    if isinstance(initialLength, str):
+        initialLength = globals()[initialLength.upper()]
+    if isinstance(initialTime, str):
+        initialTime = globals()[initialTime.upper()]
+    if isinstance(finalLength, str):
+        finalLength = globals()[finalLength.upper()]
+    if isinstance(finalTime, str):
+        finalTime = globals()[finalTime.upper()]
+
     try:
         initialLength
     except NameError:
@@ -80,7 +94,7 @@ def convertSpeed(number, initialLength, initialTime, finalLength, finalTime, rou
 
     if log == True:
         print(
-            f"Result: {round(number * initialLength / initialTime / finalLength * finalTime, roundTo)}")
+            f"Result: {round(number * initialLength / initialTime / finalLength * finalTime, roundTo):,}")
 
     return round(number * initialLength / initialTime / finalLength * finalTime, roundTo)
 
