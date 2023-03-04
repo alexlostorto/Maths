@@ -27,9 +27,9 @@ def main():
                 print(f"You chose '{array[userInput-1].__name__}'\n")
                 return userInput
 
-    def formatParam(index, paramName, parameters, param):
+    def formatParam(paramName, parameters, param):
         if paramName == '':
-            parameters[0][index] = param
+            parameters[0].append(param)
         else:
             parameters[1][paramName] = param
         return parameters
@@ -49,17 +49,15 @@ def main():
     function = input("Choose which function you would like to call: ")
     print()
 
-    function = getInput(function, functions,
-                        "Choose which function you want to call: ")
+    function = getInput(function, functions, "Choose which function you want to call: ")
 
-    params = [str(param) for param in inspect.signature(
-        functions[function-1]).parameters.values()]
+    params = [str(param) for param in inspect.signature(functions[function-1]).parameters.values()]
 
     print("--PARAMETERS--")
     positional = []
     keyword = {}
     parameters = [positional, keyword]
-    for index, param in enumerate(params):
+    for param in params:
         if '=' in param:
             paramName = param.split('=')[0]
         else:
@@ -68,18 +66,16 @@ def main():
         while True:
             param = input(f"{param}: ")
             if param.lstrip('-').isdigit():
-                parameters = formatParam(
-                    index, paramName, parameters, int(param))
+                parameters = formatParam(paramName, parameters, int(param))
                 break
             elif param.isnumeric():
-                parameters = formatParam(
-                    index, paramName, parameters, float(param))
+                parameters = formatParam(paramName, parameters, float(param))
                 break
             elif param.lower() == 'true':
-                parameters = formatParam(index, paramName, parameters, True)
+                parameters = formatParam(paramName, parameters, True)
                 break
             elif param.lower() == 'false':
-                parameters = formatParam(index, paramName, parameters, False)
+                parameters = formatParam(paramName, parameters, False)
                 break
             elif param == '':
                 if not paramName == '':
@@ -88,22 +84,18 @@ def main():
                     print("Don't leave me empty. Try again.")
             elif param.startswith('[') and param.endswith(']'):
                 if ', ' in param:
-                    parameters = formatParam(
-                        index, paramName, parameters, param[1:-1].split(', '))
+                    parameters = formatParam(paramName, parameters, param[1:-1].split(', '))
                     break
                 elif ',' in param:
-                    parameters = formatParam(
-                        index, paramName, parameters, param[1:-1].split(','))
+                    parameters = formatParam(paramName, parameters, param[1:-1].split(','))
                     break
                 elif ' ' in param:
-                    parameters = formatParam(
-                        index, paramName, parameters, param[1:-1].split(' '))
+                    parameters = formatParam(paramName, parameters, param[1:-1].split(' '))
                     break
                 else:
                     print("Invalid list. Try again.")
             else:
-                parameters = formatParam(
-                    index, paramName, parameters, param)
+                parameters = formatParam(paramName, parameters, param)
                 break
 
     print(f"\nRunning {functions[function-1].__name__}")
