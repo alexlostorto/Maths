@@ -34,6 +34,13 @@ def main():
             parameters[1][paramName] = param
         return parameters
 
+    def isfloat(num):
+        try:
+            float(num)
+            return True
+        except ValueError:
+            return False
+
     # Choose modules
     for i in range(len(modules)):
         print(f"{i+1}) {modules[i].__name__}")
@@ -68,7 +75,7 @@ def main():
             if param.lstrip('-').isdigit():
                 parameters = formatParam(paramName, parameters, int(param))
                 break
-            elif param.isnumeric():
+            elif isfloat(param):
                 parameters = formatParam(paramName, parameters, float(param))
                 break
             elif param.lower() == 'true':
