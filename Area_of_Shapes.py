@@ -61,11 +61,19 @@ def cylinderSurfaceArea(radius, height, log=True):
     return round(surfaceArea * PI, ROUND), round(surfaceArea, ROUND) + "π"
 
 
+def cuboidSurfaceArea(length, width, height, log=True):
+    if log == True:
+        print(f"Surface Area: {2 * length * width + 2 * width * height + 2 * length * height}")
+
+    return 2 * length * width + 2 * width * height + 2 * length * height
+
+
 __all__ = [
     circleArea,
     circleData,
     calculateDensity,
     calculateMass,
     calculateVolume,
-    cylinderSurfaceArea
+    cylinderSurfaceArea,
+    cuboidSurfaceArea
 ]
