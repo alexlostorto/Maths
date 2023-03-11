@@ -61,11 +61,28 @@ def cylinderSurfaceArea(radius, height, log=True):
     return round(surfaceArea * PI, ROUND), round(surfaceArea, ROUND) + "π"
 
 
-def cuboidSurfaceArea(length, width, height, log=True):
-    if log == True:
-        print(f"Surface Area: {2 * length * width + 2 * width * height + 2 * length * height}")
+def prismSurfaceArea(face='rectangle', length=1, width=1, height=1, log=True):
+    if face == 'triangle':
+        surfaceArea = length * height + width * length + width * height + width * (length ** 2 + height ** 2) ** (1 / 2)
+    else:
+        surfaceArea = 2 * length * width + 2 * width * height + 2 * length * height
 
-    return 2 * length * width + 2 * width * height + 2 * length * height
+    if log == True:
+        print(f"Surface Area: {surfaceArea}")
+
+    return surfaceArea
+
+
+def pyramidSurfaceArea(base='square', length=1, baseHeight=1, slantHeight=1, log=True):
+    if base == 'triangle':
+        surfaceArea = 0.5 * baseHeight * length + 1.5 * length * slantHeight
+    else:
+        surfaceArea = length * baseHeight + length * slantHeight + baseHeight * slantHeight
+
+    if log == True:
+        print(f"Surface Area: {surfaceArea}")
+
+    return surfaceArea
 
 
 __all__ = [
@@ -75,5 +92,6 @@ __all__ = [
     calculateMass,
     calculateVolume,
     cylinderSurfaceArea,
-    cuboidSurfaceArea
+    prismSurfaceArea,
+    pyramidSurfaceArea
 ]
