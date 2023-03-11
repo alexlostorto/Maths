@@ -63,9 +63,9 @@ def cylinderSurfaceArea(radius, height, log=True):
 
 def prismSurfaceArea(face='rectangle', length=1, width=1, height=1, log=True):
     if face == 'triangle':
-        surfaceArea = length * height + width * length + width * height + width * (length ** 2 + height ** 2) ** (1 / 2)
+        surfaceArea = round(length * height + width * length + width * height + width * (length ** 2 + height ** 2) ** (1 / 2), ROUND)
     else:
-        surfaceArea = 2 * length * width + 2 * width * height + 2 * length * height
+        surfaceArea = round(2 * length * width + 2 * width * height + 2 * length * height, ROUND)
 
     if log == True:
         print(f"Surface Area: {surfaceArea}")
@@ -75,9 +75,9 @@ def prismSurfaceArea(face='rectangle', length=1, width=1, height=1, log=True):
 
 def pyramidSurfaceArea(base='square', length=1, baseHeight=1, slantHeight=1, log=True):
     if base == 'triangle':
-        surfaceArea = 0.5 * baseHeight * length + 1.5 * length * slantHeight
+        surfaceArea = round(0.5 * baseHeight * length + 1.5 * length * slantHeight, ROUND)
     else:
-        surfaceArea = length * baseHeight + length * slantHeight + baseHeight * slantHeight
+        surfaceArea = round(length * baseHeight + length * slantHeight + baseHeight * slantHeight, ROUND)
 
     if log == True:
         print(f"Surface Area: {surfaceArea}")
