@@ -20,6 +20,13 @@ def frustumVolume(baseShape='rectangle', frustumHeight=1, baseLength=1, baseWidt
     return volume
 
 
+def conicalFrustum(version=1, frustumHeight=1, baseRadius=1, frustumRadius=1):
+    if version == 1:
+        return round(1 / 3 * PI * frustumHeight * (frustumRadius ** 2 + baseRadius ** 2 + (frustumRadius * baseRadius)), ROUND)
+    else:
+        return round((frustumHeight * PI * (baseRadius ** 3 - frustumRadius ** 3)) / (3 * (baseRadius - frustumRadius)), ROUND)
+
+
 __all__ = [
     frustumVolume
 ]
