@@ -4,32 +4,33 @@ This program contains many maths functions which you will probably find useful!
 
 ```python
 # List of functions
-def linearSolve(start, end, between):
-def geometricSolve(start, end, between):
-def ratioSimplify(ratiostr):
-def addFractions(n1, d1, n2, d2):
-def root(exponent, number):
-def geometricCreate(start, multiplier, length):
-def linearCreate(start, interval, length):
+def linearSolve(start, end, between, log=True):
+def geometricSolve(start, end, between, log=True):
+def ratioSimplify(ratiostr, log=True):
+def addFractions(n1, d1, n2, d2, log=True):
+def root(exponent, number, log=True):
+def geometricCreate(start, multiplier, length, log=True):
+def linearCreate(start, interval, length, log=True):
 def timeElapsed(function, *args):
-def quadraticSequenceCreate(a, b, c, length):
-def quadraticSequenceSolve(quadraticList):
-def lcm(x, y):
-def gcd(x, y):
-def hcf(x, y):
-def lcm2(x, y):
-def simulatenousSolve(set1, sum1, set2, sum2):
-def linearSequenceSolve(linearList):
-def linearSequenceCreate(a, b, length):
+def quadraticSequenceCreate(a, b, c, length, log=True):
+def quadraticSequenceSolve(quadraticList, log=True):
+def lcm(x, y, version=1, log=True):
+def gcd(x, y, log=True):
+def hcf(x, y, log=True):
+def simulatenousSolve(set1, sum1, set2, sum2, log=True):
+def linearSequenceSolve(linearList, log=True):
+def linearSequenceCreate(a, b, length, log=True):
 def printReturn(args):
-def quadraticCreate(a, b, c, length, *args):
-def quadraticSolve(a, length, *args):
-def checkPrime(number, *args):
-def listPrimes(start, length, *args):
-def stampToDate(timeStamp, *args):
-def quadraticSolver(a, b, c):
-def interiorAngle(sides):
-def exteriorAngle(sides):
+def quadraticCreate(a, b, c, length, log=True):
+def quadraticSolve(a, length, log=True):
+def checkPrime(number, log=True):
+def listPrimes(start, length, log=True):
+def stampToDate(timeStamp, log=True):
+def quadraticSolver(a, b, c, log=True):
+def interiorAngle(sides, log=True):
+def exteriorAngle(sides, log=True):
+def completeTheSquare(a, b, c, log=True):
+def expandDoubleBrackets(a1, b1, a2, b2, log=True):
 ```
 
 ## How it Works
