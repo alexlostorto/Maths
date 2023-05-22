@@ -218,23 +218,26 @@ def quadraticSequenceSolve(quadraticList, log=True):
     return [a, b, c, ", ".join(newQuadratic)]
 
 
-def lcm(x, y, log=True):
-    # choose the greater number
-    if x > y:
-        greater = x
-    else:
-        greater = y
+def lcm(x, y, version=1, log=True):
+    if version == 1:
+        # choose the greater number
+        if x > y:
+            greater = x
+        else:
+            greater = y
 
-    while True:
-        if (greater % x == 0) and (greater % y == 0):
-            lcmNumber = greater
-            break
-        greater += 1
+        while True:
+            if (greater % x == 0) and (greater % y == 0):
+                lcm = greater
+                break
+            greater += 1
+    else:
+        lcm = (x*y)//hcf(x, y)
 
     if log == True:
-        print(f"The LCM is: {lcmNumber}")
+        print(f"The LCM is: {lcm}")
 
-    return lcmNumber
+    return lcm
 
 
 def gcd(x, y, log=True):
@@ -256,16 +259,6 @@ def hcf(x, y, log=True):
 
     if log == True:
         print(f"The HCF is: {x}")
-
-    return x
-
-
-def lcm2(x, y, log=True):
-    # This function computes LCM
-    lcm = (x*y)//hcf(x, y)
-
-    if log == True:
-        print(f"The LCM is: {lcm}")
 
     return x
 
@@ -557,7 +550,6 @@ __all__ = [
     lcm,
     gcd,
     hcf,
-    lcm2,
     simulatenousSolve,
     linearSequenceSolve,
     linearSequenceCreate,
