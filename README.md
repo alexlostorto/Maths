@@ -51,6 +51,13 @@ return 180-(360/int(sides))
 return 360/int(sides)
 ```
 
+#### Root
+1. Find the root of a value by putting that value to the power of 1/exponent.
+
+```python
+return number**(1/exponent)
+```
+
 #### Quadratic Solve
 
 1. Solves quadratic equations using the quadratic formula and prints both possible values.
