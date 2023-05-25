@@ -1,6 +1,4 @@
-﻿using System;
-
-Console.WriteLine("---Value Conversion---");
+﻿Console.WriteLine("---Value Conversion---");
 
 List<string> dataTypes = new() { "Binary", "Hexadecimal", "Denary" };
 string dataType = dataTypes[displayChoices("Input datatype: ", dataTypes) - 1];
@@ -50,18 +48,8 @@ static int binaryToDenary(string input)
 
 static int hexToDenary(string input)
 {
-    var hexDict = new Dictionary<string, int>
+    var characters = new Dictionary<string, int>
     {
-        { "0", 0 },
-        { "1", 1 },
-        { "2", 2 },
-        { "3", 3 },
-        { "4", 4 },
-        { "5", 5 },
-        { "6", 6 },
-        { "7", 7 },
-        { "8", 8 },
-        { "9", 9 },
         { "A", 10 },
         { "B", 11 },
         { "C", 12 },
@@ -70,14 +58,26 @@ static int hexToDenary(string input)
         { "F", 15 }
     };
 
-    char[] hex = input.ToCharArray();
-    Array.Reverse(hex);
+    static int hex(string value, Dictionary<string, int> characters)
+    {
+        if (value.All(char.IsDigit))
+        {
+            return Convert.ToInt32(value);
+        } 
+        else
+        {
+            return characters[value];
+        }
+    }
+
+    char[] hexInput = input.ToCharArray();
+    Array.Reverse(hexInput);
     int multiplier = 1;
     int value = 0;
 
-    for (var i = 0; i < hex.Length; i++)
+    for (var i = 0; i < hexInput.Length; i++)
     {
-        value += hexDict[Convert.ToString(hex[i])] * multiplier;
+        value += hex(Char.ToString(hexInput[i]), characters) * multiplier;
         multiplier *= 16;
     }
 
@@ -116,5 +116,5 @@ static int displayChoices(string question, List<string> dataTypes)
 
 static void preventConsoleClose()
 {
-    Console.ReadLine();
+    _ = Console.ReadLine();
 }
