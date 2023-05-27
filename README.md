@@ -58,6 +58,15 @@ return 360/int(sides)
 return number**(1/exponent)
 ```
 
+#### Prime Number
+1. Check if a number is prime by iterating through possible factors and checking whether they have a remainder of 0.
+
+```python
+for i in range(2, int(number**(1/2))+1):
+    if number % i == 0:
+        primeState = False
+```
+
 #### Quadratic Solve
 
 1. Solves quadratic equations using the quadratic formula and prints both possible values.
