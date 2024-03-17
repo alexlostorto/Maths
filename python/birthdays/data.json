@@ -1,0 +1,44 @@
+[
+    {
+        "numPeople": 28,
+        "trials": 15870209,
+        "matches": 10387190,
+        "countRepeats": false
+    },
+    {
+        "numPeople": 28,
+        "trials": 10054837,
+        "matches": 10165787,
+        "countRepeats": true
+    },
+    {
+        "numPeople": 34,
+        "trials": 1256596,
+        "matches": 999266,
+        "countRepeats": false
+    },
+    {
+        "numPeople": 40,
+        "trials": 1414328,
+        "matches": 1260450,
+        "countRepeats": false
+    },
+    {
+        "numPeople": 50,
+        "trials": 2530051,
+        "matches": 2455151,
+        "countRepeats": false
+    },
+    {
+        "numPeople": 55,
+        "trials": 1351161,
+        "matches": 1332520,
+        "countRepeats": false
+    },
+    {
+        "numPeople": 69,
+        "trials": 1080560,
+        "matches": 1079441,
+        "countRepeats": false
+    }
+]
